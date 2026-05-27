@@ -20,7 +20,7 @@ public class Configuration {
         FileConfiguration config = pluginModel.getConfig();
         serializer = Text.Type.valueOf(config.getString("serializer", serializer.toString()).toUpperCase());
         Text.init(serializer);
-        prefix = config.getString("prefix", prefix);
+        prefix = Text.get.colorize(config.getString("prefix", prefix));
         language = config.getString("lang", language.toLowerCase());
         checkUpdates = config.getBoolean("check_updates", checkUpdates);
         permissionAdmin = config.getString("permission.admin_command", permissionAdmin);
