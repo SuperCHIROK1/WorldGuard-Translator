@@ -1,0 +1,61 @@
+# Шаблон сообщения о запрете действия.
+# %what% автоматически заменяется на переведенную строку из секции "components".
+deny_message: "&#ff5400&l❌ Эй! &fИзвините, но Вы не можете &#ff5400%what% &fздесь!"
+# Переводы конкретных действий.
+# Вставляются вместо %what% в deny_message.
+# Можете добавлять свои переводы с помощью /wgt component add <ключ>;<значение>
+components:
+  # Block place
+  "place that block": "устанавливать блоки"
+  "place fire": "поджигать территорию"
+  "use frostwalker": "использовать Ледоход"
+
+  # Block break
+  "break that block": "ломать блоки"
+  "use dynamite": "использовать динамит"
+
+  # Block / entity interact
+  "use that": "использовать это"
+  "open that": "открывать это"
+  "sleep": "ложиться спать"
+  "use anchors": "использовать якорь возрождения"
+  "use explosives": "использовать взрывчатку"
+
+  # Entity spawn / drop
+  "place things": "размещать предметы"
+  "place vehicles": "ставить транспорт"
+  "drop items": "выбрасывать предметы"
+  "drop XP": "выбрасывать опыт"
+  "use lingering potions": "использовать оседающие зелья"
+
+  # Entity destroy / pickup
+  "break things": "ломать предметы"
+  "break vehicles": "ломать транспорт"
+  "pick up items": "подбирать предметы"
+
+  # Entity damage / mount
+  "change that": "изменять это"
+  "ride that": "оседлать это"
+  "hit that": "атаковать это"
+  "damage that": "наносить урон этому"
+  "harm that": "причинять вред этому"
+  "PvP": "драться с игроками"
+
+messages:
+  reloaded: "%prefix% &#70e000Плагин успешно перезагружен! &#e2eafcНовые сообщения/переводы были добавлены в WorldGuard. &7(Время: %s мс.)"
+  deny_message:
+    installed: "%prefix% &#70e000Успешно установлен deny_message!"
+    installed_temp: "%prefix% &#70e000Успешно установлено временное deny_message &7(оно действует до рестарта сервера или плагина)"
+  component:
+    added: "%prefix% &#70e000Успешно добавлен перевод: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
+    usage: "%prefix% &#e2eafcНапишите в формате &#2bafb6<ключ>;<перевод>&#e2eafc. Пример: &#2bafb6break that block;ломать блоки"
+    list:
+      header: "&#a1a8b8----- &#2bafb6&lWG-T : Переводы &#a1a8b8-----\n"
+      # {0} - ключ | {1} - перевод
+      format: "&#a1a8b8• &#2bafb6{0} &#a1a8b8-> &#e2eafc{1}"
+  help: |-
+    &8----- &3&lWorldGuard Translator &8-----
+    
+    &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcПерезагрузка плагина.
+    &8• &e/%cmd% &6component <add | set | list> &7- &#e2eafcУправление переводами.
+    &8• &e/%cmd% &6denyMessage <set | setTemp> &#e2eafc- &fУстановка deny_message.

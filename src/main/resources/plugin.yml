@@ -1,0 +1,27 @@
+name: WorldGuard-Translator
+description: "Translate & Customize WorldGuard messages via config, no JAR modifying required."
+website: https://github.com/SuperCHIROK1/WorldGuard-Translator
+version: '${project.version}'
+main: dev.superchirok1.wgtranslator.WorldGuardTranslator
+api-version: '1.16'
+depend: [WorldGuard]
+authors:
+  - SuperCHIROK1
+libraries:
+  - it.unimi.dsi:fastutil:8.5.15
+  - net.bytebuddy:byte-buddy:1.14.18
+  - net.bytebuddy:byte-buddy-agent:1.14.18
+
+commands:
+  wgt:
+    aliases:
+      - wg-translate
+      - worldguard-translate
+      - wg-t
+      - worldguardtranslator
+      - worldguard-translator
+      - wg-translator
+
+permissions:
+  wgtranslator.admin:
+    description: Admin permissions

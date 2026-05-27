@@ -1,0 +1,61 @@
+# Deny message template.
+# %what% is automatically replaced with the translated string from the "components" section.
+deny_message: "&#ff5400&l❌ Hey! &fSorry, but you can`t &#ff5400%what% &fhere!"
+# Translations of specific actions.
+# Inserted instead of %what% in deny_message.
+# You can add your own translations using /wgt component add <key>;<value>
+components:
+  # Block place
+  "place that block": "place blocks"
+  "place fire": "ignite the ground"
+  "use frostwalker": "use Frost Walker"
+
+  # Block break
+  "break that block": "break blocks"
+  "use dynamite": "use dynamite"
+
+  # Block / entity interact
+  "use that": "use this"
+  "open that": "open this"
+  "sleep": "go to sleep"
+  "use anchors": "use respawn anchor"
+  "use explosives": "use explosives"
+
+  # Entity spawn / drop
+  "place things": "place items"
+  "place vehicles": "place vehicles"
+  "drop items": "drop items"
+  "drop XP": "drop XP"
+  "use lingering potions": "use lingering potions"
+
+  # Entity destroy / pickup
+  "break things": "break items"
+  "break vehicles": "break vehicles"
+  "pick up items": "pick up items"
+
+  # Entity damage / mount
+  "change that": "modify this"
+  "ride that": "ride this"
+  "hit that": "attack this"
+  "damage that": "damage this"
+  "harm that": "harm this"
+  "PvP": "fight players"
+
+messages:
+  reloaded: "%prefix% &#70e000Plugin successfully reloaded! &#e2eafcNew messages/translations have been applied to WorldGuard. &7(Time: %s ms.)"
+  deny_message:
+    installed: "%prefix% &#70e000Successfully set deny_message!"
+    installed_temp: "%prefix% &#70e000Successfully set temporary deny_message &7(lasts until server or plugin restart)"
+  component:
+    added: "%prefix% &#70e000Successfully added translation: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
+    usage: "%prefix% &#e2eafcPlease use the format &#2bafb6<key>;<translation>&#e2eafc. Example: &#2bafb6break that block;break blocks"
+    list:
+      header: "&#a1a8b8----- &#2bafb6&lWG-T : Components &#a1a8b8-----\n"
+      # {0} - key | {1} - translation
+      format: "&#a1a8b8• &#2bafb6{0} &#a1a8b8-> &#e2eafc{1}"
+  help: |-
+    &8----- &3&lWorldGuard Translator &8-----
+    
+    &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcReload the plugin.
+    &8• &e/%cmd% &6component <add | set | list> &7- &#e2eafcManage translations.
+    &8• &e/%cmd% &6denyMessage <set | setTemp> &7- &#e2eafcSet deny_message.

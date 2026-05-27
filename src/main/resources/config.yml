@@ -1,0 +1,21 @@
+# Pre-made WorldGuard translations.
+# Downloaded from https://github.com/SuperCHIROK1/WorldGuard-Translator/tree/main/translations
+# You can add your own languages. Create a file inside "translations" folder and name it in <language>.yml format.
+# All you need to do is customize the message style to fit your server.
+lang: en
+# Prefix for WorldGuard-Translator plugin messages.
+# Used in local messages, replaced via %prefix%
+prefix: "&#2bafb6&l[WG-Translator]&f"
+# Text formatting serializer.
+#
+#: LEGACY_AMPERSAND - Traditional legacy color codes (e.g., &c, &l)
+#: MINI_MESSAGE - Modern MiniMessage formatting (Paper 1.18+)
+#   Learn more about formatting here: https://docs.papermc.io/adventure/minimessage/format/
+serializer: LEGACY_AMPERSAND
+# Check for WorldGuard-Translator plugin updates.
+# If an update is available, the plugin will notify administrators in the console and chat.
+check_updates: true
+# Permission settings.
+permissions:
+  admin_command: "wgtranslator.admin"
+  update_log: "wgtranslator.update"
