@@ -78,7 +78,7 @@ public final class WorldGuardTranslator extends JavaPlugin {
             if (!Configuration.checkUpdates) return;
 
             String currentVersion = getDescription().getVersion();
-            if (currentVersion.equals(version)) {
+            if (!currentVersion.equals(version)) {
                 Logger.info("");
                 Logger.info("&eUpdate available! &c" + currentVersion + " &7-> &a" + version);
                 Logger.info("Download: https://github.com/SuperCHIROK1/WorldGuard-Translator");
