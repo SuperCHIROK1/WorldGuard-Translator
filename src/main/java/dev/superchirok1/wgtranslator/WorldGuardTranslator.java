@@ -14,6 +14,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 @Getter
 public final class WorldGuardTranslator extends JavaPlugin {
@@ -35,7 +36,7 @@ public final class WorldGuardTranslator extends JavaPlugin {
         Text.init(Text.Type.valueOf(getConfig().getString("serializer", "LEGACY_AMPERSAND").toUpperCase()));
         Configuration.init(this);
         TranslationManager.setPlugin(this);
-        TranslationManager.loadTranslations(Configuration.language, ()->{
+        TranslationManager.loadTranslations(Configuration.language, (time)->{
             StringPatcher.patchFlags();
             StringPatcher.setDenyMessage(TranslationManager.getTranslation().denyMessage);
             Bukkit.getScheduler().runTask(this, ()->{
@@ -46,7 +47,6 @@ public final class WorldGuardTranslator extends JavaPlugin {
                 getServer().getPluginManager().registerEvents(new UpdateChecker(this), this);
                 checkForUpdates();
             });
-
         });
 
         metrics.addCustomChart(new Metrics.SimplePie("used_language", () -> {
@@ -58,14 +58,18 @@ public final class WorldGuardTranslator extends JavaPlugin {
         }));
     }
 
-    public void reload(String name) {
+    public void reload(String name, Consumer<Long> onComplete) {
         long start = System.currentTimeMillis();
         Logger.info(name + " start task reloading");
+
         reloadConfig();
         Configuration.init(this);
-        TranslationManager.loadTranslations(Configuration.language, ()->{
+
+        TranslationManager.loadTranslations(Configuration.language, (v) -> {
             StringPatcher.setDenyMessage(TranslationManager.getTranslation().denyMessage);
-            Logger.info("Reload completed in " + (System.currentTimeMillis() - start) + "ms");
+            long time = System.currentTimeMillis() - start;
+            Logger.info("Reload completed in " + time + "ms");
+            onComplete.accept(time);
         });
     }
 

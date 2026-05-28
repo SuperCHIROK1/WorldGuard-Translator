@@ -45,9 +45,9 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
 
         switch (args[0].toLowerCase()) {
             case "reload", "restart", "r":
-                long start = System.currentTimeMillis();
-                plugin.reload(sender.getName());
-                sender.sendMessage(String.format(messages.reloaded(), System.currentTimeMillis() - start));
+                plugin.reload(sender.getName(), (time) -> {
+                    sender.sendMessage(String.format(messages.reloaded(), time));
+                });
                 return true;
             case "denymessage": {
                 if (args.length < 2) {
