@@ -56,6 +56,10 @@ public final class WorldGuardTranslator extends JavaPlugin {
         metrics.addCustomChart(new Metrics.SimplePie("used_serializer", () -> {
             return Configuration.serializer.name();
         }));
+
+        metrics.addCustomChart(new Metrics.SimplePie("check_updates", () -> {
+            return String.valueOf(Configuration.checkUpdates);
+        }));
     }
 
     public void reload(String name, Consumer<Long> onComplete) {
