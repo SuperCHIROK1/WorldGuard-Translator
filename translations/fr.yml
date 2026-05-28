@@ -1,0 +1,63 @@
+# Traduction par 'git-jamesfrench'.
+
+# Modèle de message de refus.
+# %what% est automatiquement remplacé par le texte traduit de la section "components".
+deny_message: "&#ff5400&l❌ Hey ! &fDésolé, mais vous ne pouvez pas &#ff5400%what% &fici !"
+# Traductions d'actions spécifiques.
+# Inséré à la place de %what% dans deny_message.
+# Vous pouvez ajouter vos propres traductions avec la commande /wgt component add <clé>;<valeur>
+components:
+  # Block place
+  "place that block": "poser des blocs"
+  "place fire": "mettre le feu"
+  "use frostwalker": "utiliser Semelles Givrantes"
+
+  # Block break
+  "break that block": "casser des blocs"
+  "use dynamite": "utiliser de la dynamite"
+
+  # Block / entity interact
+  "use that": "interagir avec ça"
+  "open that": "ouvrir ça"
+  "sleep": "dormir"
+  "use anchors": "utiliser les Ancres de réapparition"
+  "use explosives": "utiliser des explosifs"
+
+  # Entity spawn / drop
+  "place things": "poser des objets"
+  "place vehicles": "placer des véhicules"
+  "drop items": "lâcher des objets"
+  "drop XP": "lâcher de l'XP"
+  "use lingering potions": "utiliser des potions persistantes"
+
+  # Entity destroy / pickup
+  "break things": "casser des objets"
+  "break vehicles": "casser des véhicules"
+  "pick up items": "ramasser des objets"
+
+  # Entity damage / mount
+  "change that": "modifier ça"
+  "ride that": "monter sur ça"
+  "hit that": "attaquer ça"
+  "damage that": "endommager ça"
+  "harm that": "blesser ça"
+  "PvP": "combattre des joueurs·euses"
+
+messages:
+  reloaded: "%prefix% &#70e000Plugin rechargé avec succès ! &#e2eafcLes nouveaux messages/traductions ont été appliqués à WorldGuard. &7(Durée : %s ms.)"
+  deny_message:
+    installed: "%prefix% &#70e000deny_message défini avec succès !"
+    installed_temp: "%prefix% &#70e000deny_message défini temporairement avec succès ! &7(dure jusqu'au redémarrage du serveur ou du plugin)"
+  component:
+    added: "%prefix% &#70e000Traduction ajoutée avec succès : &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
+    usage: "%prefix% &#e2eafcVeuillez utiliser le format &#2bafb6<key>;<translation>&#e2eafc. Exemple : &#2bafb6break that block;casser des blocs"
+    list:
+      header: "&#a1a8b8----- &#2bafb6&lWG-T : Composants &#a1a8b8-----\n"
+      # {0} - clé | {1} - traduction
+      format: "&#a1a8b8• &#2bafb6{0} &#a1a8b8-> &#e2eafc{1}"
+  help: |-
+    &8----- &3&lWorldGuard Translator &8-----
+    
+    &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcRecharger le plugin.
+    &8• &e/%cmd% &6component <add | set | list> &7- &#e2eafcGérer les traductions.
+    &8• &e/%cmd% &6denyMessage <set | setTemp> &7- &#e2eafcDéfinir deny_message.
