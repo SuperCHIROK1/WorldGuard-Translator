@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 @UtilityClass
 public class TranslationManager {
@@ -29,8 +31,8 @@ public class TranslationManager {
     @Getter
     private Translation translation;
 
-    public void loadTranslations(String lang, Runnable callback) {
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+    public void loadTranslations(String lang, Consumer<? super Void> callback) {
+        CompletableFuture.runAsync(() -> {
 
             File folder = new File(plugin.getDataFolder(), "translations");
             if (!folder.exists()) folder.mkdirs();
@@ -46,16 +48,17 @@ public class TranslationManager {
                     Logger.error("Failed to download localization file [" + lang + "] from repository. English localization is used by default.");
                     file = new File(folder, "en.yml");
                     if (!file.exists()) {
-                        plugin.saveResource("translations/en.yml", false);
+                        Bukkit.getScheduler().runTask(plugin, () -> {
+                            plugin.saveResource("translations/en.yml", false);
+                        });
                     }
                 }
             }
 
             config = YamlConfiguration.loadConfiguration(file);
             translation = new Translation(config, file);
-            callback.run();
 
-        });
+        }).thenAccept(callback);
     }
 
     public void setMemoryDenyMessage(String message) {
