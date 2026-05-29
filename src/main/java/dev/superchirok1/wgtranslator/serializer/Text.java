@@ -9,23 +9,17 @@ import lombok.experimental.UtilityClass;
 public class Text {
     @Getter
     private final LegacyAmpersandSerializer legacyAmpersandSerializer = new LegacyAmpersandSerializer();
-    @Getter
-    private final MiniMessageSerializer miniMessageSerializer = new MiniMessageSerializer();
 
     public TextSerializer get;
 
     public void init(Type type) {
-        get = type.getSerializer();
+        get = (type == Type.LEGACY_AMPERSAND)
+                ? legacyAmpersandSerializer
+                : new MiniMessageSerializer();
     }
 
-    @Getter
     public enum Type {
-        LEGACY_AMPERSAND(Text.getLegacyAmpersandSerializer()),
-        MINI_MESSAGE(Text.getMiniMessageSerializer());
-
-        final TextSerializer serializer;
-        Type(TextSerializer serializer) {
-            this.serializer = serializer;
-        }
+        LEGACY_AMPERSAND,
+        MINI_MESSAGE;
     }
 }
