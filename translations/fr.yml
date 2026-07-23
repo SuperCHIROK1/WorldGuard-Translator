@@ -3,6 +3,9 @@
 # Modèle de message de refus.
 # %what% est automatiquement remplacé par le texte traduit de la section "components".
 deny_message: "&#ff5400&l❌ Hey ! &fDésolé, mais vous ne pouvez pas &#ff5400%what% &fici !"
+# Message de refus d'entrer et de sortie.
+entry_deny_message: "&#ff5400&l❌ Hey ! &fVous n'avez pas le droit d'entrer dans cette zone."
+exit_deny_message: "&#ff5400&l❌ Hey ! &fVous n'avez pas le droit de sortir de cette zone."
 # Traductions d'actions spécifiques.
 # Inséré à la place de %what% dans deny_message.
 # Vous pouvez ajouter vos propres traductions avec la commande /wgt component add <clé>;<valeur>
