@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
+@Getter
 public class Translation {
     private final YamlConfiguration config;
     private final File file;
@@ -20,7 +21,7 @@ public class Translation {
         exitDenyMessage = Text.get.colorize(config.getString("exit_deny_message", "&#ff5400&l❌ Hey! &fYou are not permitted to leave this area."));
         this.config = config;
         this.file = file;
-        components = new Components();
+        components = new Components(this);
         components.init(config.getConfigurationSection("components"));
         messages = new Messages(config.getConfigurationSection("messages"));
     }
@@ -30,30 +31,45 @@ public class Translation {
     public String denyMessage, entryDenyMessage, exitDenyMessage;
 
     @Getter
-    public class Components {
+    public static class Components {
+        protected final Object2ObjectOpenHashMap<String, String> map = new Object2ObjectOpenHashMap<>();
+        private final Translation translation;
+        private ConfigurationSection section;
 
-        private final Object2ObjectOpenHashMap<String, String> map = new Object2ObjectOpenHashMap<>();
+        protected Components(Translation translation) {
+            this.translation = translation;
+        }
 
         public void init(ConfigurationSection section) {
             map.clear();
             if (section == null) return;
             section.getKeys(false).forEach(k -> map.put(k, section.getString(k)));
+            this.section = section;
         }
 
         public String get(String what) {
             return map.getOrDefault(what, what);
         }
 
-        public void set(ConfigurationSection section, String key, String value) {
-            section.set(key, value);
-            map.put(key, section.getString(key));
+        public void set(String key, String value) {
+            this.section.set(key, value);
+            map.put(key, this.section.getString(key));
             try {
-                config.save(file);
+                translation.getConfig().save(translation.getFile());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
+        public void remove(String key) {
+            map.remove(key);
+            this.section.set(key, null);
+            try {
+                translation.getConfig().save(translation.getFile());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public record Messages(
