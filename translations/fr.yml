@@ -62,5 +62,5 @@ messages:
     &8----- &3&lWorldGuard Translator &8-----
     
     &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcRecharger le plugin.
-    &8• &e/%cmd% &6component <add | set | list> &7- &#e2eafcGérer les traductions.
+    &8• &e/%cmd% &6component <add | set | list | remove> &7- &#e2eafcGérer les traductions.
     &8• &e/%cmd% &6denyMessage <set | setTemp> &7- &#e2eafcDéfinir deny_message.

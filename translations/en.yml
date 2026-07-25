@@ -52,6 +52,9 @@ messages:
   component:
     added: "%prefix% &#70e000Successfully added translation: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
     usage: "%prefix% &#e2eafcPlease use the format &#2bafb6<key>;<translation>&#e2eafc. Example: &#2bafb6break that block;break blocks"
+    remove:
+      is_not_contains: "%prefix% &#e2eafcComponent &#2bafb6%s &#e2eafcwas not found in the component list."
+      removed: "%prefix% &#70e000Successfully removed translation: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
     list:
       header: "&#a1a8b8----- &#2bafb6&lWG-T : Components &#a1a8b8-----\n"
       # {0} - key | {1} - translation
@@ -60,5 +63,5 @@ messages:
     &8----- &3&lWorldGuard Translator &8-----
     
     &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcReload the plugin.
-    &8• &e/%cmd% &6component <add | set | list> &7- &#e2eafcManage translations.
+    &8• &e/%cmd% &6component <add | set | list | remove> &7- &#e2eafcManage translations.
     &8• &e/%cmd% &6denyMessage <set | setTemp> &7- &#e2eafcSet deny_message.

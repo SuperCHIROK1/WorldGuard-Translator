@@ -25,7 +25,7 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
     private final LegacyAmpersandSerializer text = Text.getLegacyAmpersandSerializer();
 
     private static final List<String> TAB_1 = Arrays.asList("reload", "restart", "component", "help", "denyMessage");
-    private static final List<String> TAB_COMPONENT = Arrays.asList("add", "set", "list");
+    private static final List<String> TAB_COMPONENT = Arrays.asList("add", "set", "remove", "list");
     private static final List<String> TAB_DM = Arrays.asList("set", "setTemp");
 
     public TranslatorCommand(WorldGuardTranslator plugin) {
@@ -42,35 +42,35 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
         Translation.Messages messages = TranslationManager.getTranslation().messages;
 
         switch (args[0].toLowerCase()) {
-            case "reload", "restart", "r":
+            case "reload", "restart", "r": {
                 plugin.reload(sender.getName(), (time) -> {
                     sender.sendMessage(String.format(messages.reloaded(), time));
                 });
                 return true;
+            }
+
             case "denymessage": {
-                if (args.length < 2) {
+                if (args.length < 3) {
                     sender.sendMessage(messages.help().replace("%cmd%", label));
                     return true;
                 }
+
                 String msg = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
                 switch (args[1].toLowerCase()) {
-                    case "set": {
+                    case "set" -> {
                         TranslationManager.setDenyMessage(msg);
                         sender.sendMessage(messages.denyMessageInstalled());
-                        break;
                     }
-                    case "settemp": {
+                    case "settemp" -> {
                         TranslationManager.setMemoryDenyMessage(msg);
                         sender.sendMessage(messages.denyMessageInstalledTemp());
-                        break;
                     }
-                    default:
-                        sender.sendMessage(messages.help().replace("%cmd%", label));
-                        break;
+                    default -> sender.sendMessage(messages.help().replace("%cmd%", label));
                 }
                 return true;
             }
-            case "component":
+
+            case "component": {
                 if (args.length < 2) {
                     sender.sendMessage(messages.help().replace("%cmd%", label));
                     return true;
@@ -79,23 +79,51 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
                 Translation.Components components = TranslationManager.getTranslation().components;
 
                 switch (args[1].toLowerCase()) {
-                    case "add", "set":
+                    case "add", "set" -> {
+                        if (args.length < 3) {
+                            sender.sendMessage(messages.componentUsage());
+                            return true;
+                        }
+
                         String msg = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
                         if (msg.indexOf(';') == -1) {
                             sender.sendMessage(messages.componentUsage());
                             return true;
                         }
-                        String[] strings = msg.split(";");
+
+                        String[] strings = msg.split(";", 2);
                         if (strings.length < 2) {
                             sender.sendMessage(messages.componentUsage());
                             return true;
                         }
 
-                        components.set(TranslationManager.getConfig().getConfigurationSection("components"), strings[0].trim(), strings[1].trim());
-                        sender.sendMessage(String.format(messages.componentAdded(), strings[0].trim(), strings[1].trim()));
-                        break;
+                        String key = strings[0].trim();
+                        String value = strings[1].trim();
 
-                    case "list":
+                        components.set(key, value);
+                        sender.sendMessage(String.format(messages.componentAdded(), key, value));
+                        return true;
+                    }
+
+                    case "remove" -> {
+                        if (args.length < 3) {
+                            sender.sendMessage(messages.help().replace("%cmd%", label));
+                            return true;
+                        }
+
+                        String key = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
+                        if (!components.getMap().containsKey(key)) {
+                            sender.sendMessage(String.format(messages.componentRemoveIsNotContains(), key));
+                            return true;
+                        }
+
+                        String value = components.get(key);
+                        components.remove(key);
+                        sender.sendMessage(String.format(messages.componentRemoveRemoved(), key, value));
+                        return true;
+                    }
+
+                    case "list" -> {
                         sender.sendMessage(text.colorize(messages.componentListHeader()));
                         for (Map.Entry<String, String> map : components.getMap().entrySet()) {
                             sender.sendMessage(
@@ -104,13 +132,15 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
                                             .replace("{1}", map.getValue())
                             );
                         }
-                        break;
+                        return true;
+                    }
 
-                    default:
+                    default -> {
                         sender.sendMessage(messages.help().replace("%cmd%", label));
-                        break;
+                        return true;
+                    }
                 }
-                return true;
+            }
 
             case "help":
                 sender.sendMessage(messages.help().replace("%cmd%", label));
@@ -150,7 +180,7 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
             return tabFilter(TAB_1, args[0]);
         }
         if (args.length == 2) {
-            return switch (args[0].toLowerCase(Locale.ROOT)) {
+            return switch (args[0].toLowerCase()) {
                 case "component" -> tabFilter(TAB_COMPONENT, args[1]);
                 case "denymessage" -> tabFilter(TAB_DM, args[1]);
                 default -> Collections.emptyList();

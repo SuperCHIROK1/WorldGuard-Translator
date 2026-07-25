@@ -52,6 +52,9 @@ messages:
   component:
     added: "%prefix% &#70e000Успешно добавлен перевод: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
     usage: "%prefix% &#e2eafcНапишите в формате &#2bafb6<ключ>;<перевод>&#e2eafc. Пример: &#2bafb6break that block;ломать блоки"
+    remove:
+      is_not_contains: "%prefix% &#e2eafcПеревод для &#2bafb6%s &#e2eafcне был найден в списке переведенных."
+      removed: "%prefix% &#70e000Успешно удален перевод: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
     list:
       header: "&#a1a8b8----- &#2bafb6&lWG-T : Переводы &#a1a8b8-----\n"
       # {0} - ключ | {1} - перевод
@@ -60,5 +63,5 @@ messages:
     &8----- &3&lWorldGuard Translator &8-----
     
     &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcПерезагрузка плагина.
-    &8• &e/%cmd% &6component <add | set | list> &7- &#e2eafcУправление переводами.
+    &8• &e/%cmd% &6component <add | set | list | remove> &7- &#e2eafcУправление переводами.
     &8• &e/%cmd% &6denyMessage <set | setTemp> &#e2eafc- &fУстановка deny_message.

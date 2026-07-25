@@ -78,6 +78,8 @@ public class Translation {
             String denyMessageInstalledTemp,
             String componentAdded,
             String componentUsage,
+            String componentRemoveIsNotContains,
+            String componentRemoveRemoved,
             String componentListHeader,
             String componentListFormat,
             String help
@@ -89,6 +91,8 @@ public class Translation {
                     format(section.getString("deny_message.installed_temp", "")),
                     format(section.getString("component.added", "")),
                     format(section.getString("component.usage", "")),
+                    format(section.getString("component.remove.is_not_contains", "")),
+                    format(section.getString("component.remove.removed", "")),
                     format(section.getString("component.list.header", "")),
                     format(section.getString("component.list.format", "")),
                     format(section.getString("help", ""))
