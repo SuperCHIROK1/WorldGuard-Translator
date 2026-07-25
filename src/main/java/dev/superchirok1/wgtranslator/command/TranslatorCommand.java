@@ -24,7 +24,7 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
     private final WorldGuardTranslator plugin;
     private final LegacyAmpersandSerializer text = Text.getLegacyAmpersandSerializer();
 
-    private static final List<String> TAB_1 = Arrays.asList("reload", "restart", "component", "help", "denyMessage");
+    private static final List<String> TAB_1 = Arrays.asList("reload", "restart", "component", "help", "denyMessage", "dm");
     private static final List<String> TAB_COMPONENT = Arrays.asList("add", "set", "remove", "list");
     private static final List<String> TAB_DM = Arrays.asList("set", "setTemp");
 
@@ -49,7 +49,7 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
 
-            case "denymessage": {
+            case "denymessage", "dm": {
                 if (args.length < 3) {
                     sender.sendMessage(messages.help().replace("%cmd%", label));
                     return true;
@@ -182,7 +182,7 @@ public class TranslatorCommand implements CommandExecutor, TabCompleter {
         if (args.length == 2) {
             return switch (args[0].toLowerCase()) {
                 case "component" -> tabFilter(TAB_COMPONENT, args[1]);
-                case "denymessage" -> tabFilter(TAB_DM, args[1]);
+                case "denymessage", "dm" -> tabFilter(TAB_DM, args[1]);
                 default -> Collections.emptyList();
             };
         }
