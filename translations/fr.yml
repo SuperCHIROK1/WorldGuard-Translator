@@ -54,6 +54,9 @@ messages:
   component:
     added: "%prefix% &#70e000Traduction ajoutée avec succès : &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
     usage: "%prefix% &#e2eafcVeuillez utiliser le format &#2bafb6<key>;<translation>&#e2eafc. Exemple : &#2bafb6break that block;casser des blocs"
+    remove:
+      is_not_contains: "%prefix% &#e2eafcLe composant &#2bafb6%s &#e2eafcn'a pas été trouvé dans la liste de composants."
+      removed: "%prefix% &#70e000La traduction a été retirée avec succès : &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
     list:
       header: "&#a1a8b8----- &#2bafb6&lWG-T : Composants &#a1a8b8-----\n"
       # {0} - clé | {1} - traduction
