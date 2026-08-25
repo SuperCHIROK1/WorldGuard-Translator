@@ -106,7 +106,7 @@
     <dependency>
       <groupId>com.sk89q.worldguard</groupId>
       <artifactId>worldguard-bukkit</artifactId>
-      <version>7.0.5</version>
+      <version>7.0.18</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
