@@ -1,0 +1,67 @@
+# Sjabloon voor een weigeringsbericht.
+# %what% wordt automatisch vervangen door de vertaling uit de sectie "components".
+deny_message: "&#ff5400&l❌ Ho! &fSorry, je mag hier niet &#ff5400%what% &f!"
+# Weigeringsberichten voor het betreden en verlaten van een gebied.
+entry_deny_message: "&#ff5400&l❌ Ho! &fJe mag dit gebied niet betreden."
+exit_deny_message: "&#ff5400&l❌ Ho! &fJe mag dit gebied niet verlaten."
+# Vertalingen van specifieke acties.
+# Deze tekst wordt in deny_message op de plek van %what% ingevoegd.
+# Je kunt zelf vertalingen toevoegen met /wgt component add <key>;<value>
+components:
+  # Blokken plaatsen
+  "place that block": "blokken plaatsen"
+  "place fire": "de grond in brand steken"
+  "use frostwalker": "de betovering Frost Walker gebruiken"
+
+  # Blokken breken
+  "break that block": "blokken breken"
+  "use dynamite": "dynamiet gebruiken"
+
+  # Interactie met blokken en entiteiten
+  "use that": "dit gebruiken"
+  "open that": "dit openen"
+  "sleep": "slapen"
+  "use anchors": "een respawnanker gebruiken"
+  "use explosives": "explosieven gebruiken"
+
+  # Entiteiten plaatsen en voorwerpen laten vallen
+  "place things": "voorwerpen plaatsen"
+  "place vehicles": "voertuigen plaatsen"
+  "drop items": "voorwerpen laten vallen"
+  "drop XP": "ervaring laten vallen"
+  "use lingering potions": "aanhoudende drankjes gebruiken"
+
+  # Entiteiten vernietigen en voorwerpen oppakken
+  "break things": "voorwerpen vernietigen"
+  "break vehicles": "voertuigen vernietigen"
+  "pick up items": "voorwerpen oppakken"
+
+  # Entiteiten aanpassen, berijden en schade toebrengen
+  "change that": "dit aanpassen"
+  "ride that": "hierop rijden"
+  "hit that": "dit aanvallen"
+  "damage that": "dit beschadigen"
+  "harm that": "dit verwonden"
+  "PvP": "tegen spelers vechten"
+
+messages:
+  reloaded: "%prefix% &#70e000Plugin opnieuw geladen! &#e2eafcDe nieuwe berichten en vertalingen zijn toegepast op WorldGuard. &7(Duur: %s ms.)"
+  deny_message:
+    installed: "%prefix% &#70e000Weigeringsbericht ingesteld!"
+    installed_temp: "%prefix% &#70e000Tijdelijk weigeringsbericht ingesteld &7(geldig tot de server of plugin opnieuw wordt gestart)"
+  component:
+    added: "%prefix% &#70e000Vertaling toegevoegd: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
+    usage: "%prefix% &#e2eafcGebruik de notatie &#2bafb6<key>;<translation>&#e2eafc. Bijvoorbeeld: &#2bafb6break that block;blokken breken"
+    remove:
+      is_not_contains: "%prefix% &#e2eafcOnderdeel &#2bafb6%s &#e2eafcstaat niet in de onderdelenlijst."
+      removed: "%prefix% &#70e000Vertaling verwijderd: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
+    list:
+      header: "&#a1a8b8----- &#2bafb6&lWG-T : Onderdelen &#a1a8b8-----\n"
+      # {0} - sleutel | {1} - vertaling
+      format: "&#a1a8b8• &#2bafb6{0} &#a1a8b8-> &#e2eafc{1}"
+  help: |-
+    &8----- &3&lWorldGuard Translator &8-----
+    
+    &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcLaad de plugin opnieuw.
+    &8• &e/%cmd% &6component <add | set | list | remove> &7- &#e2eafcBeheer vertalingen.
+    &8• &e/%cmd% &6denyMessage <set | setTemp> &7- &#e2eafcStel het weigeringsbericht in.
