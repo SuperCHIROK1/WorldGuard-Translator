@@ -1,0 +1,67 @@
+# Plantilla del mensaje de denegación.
+# %what% se sustituye automáticamente por el texto traducido de la sección "components".
+deny_message: "&#ff5400&l❌ ¡Oye! &f¡Lo siento, pero no puedes &#ff5400%what% &faquí!"
+# Mensajes de denegación de entrada y salida.
+entry_deny_message: "&#ff5400&l❌ ¡Oye! &fNo tienes permiso para entrar en esta zona."
+exit_deny_message: "&#ff5400&l❌ ¡Oye! &fNo tienes permiso para salir de esta zona."
+# Traducciones de acciones concretas.
+# Se insertan en lugar de %what% en deny_message.
+# Puedes añadir tus propias traducciones con /wgt component add <clave>;<valor>
+components:
+  # Colocar bloques
+  "place that block": "colocar bloques"
+  "place fire": "prender fuego"
+  "use frostwalker": "usar Paso helado"
+
+  # Romper bloques
+  "break that block": "romper bloques"
+  "use dynamite": "usar dinamita"
+
+  # Interactuar con bloques / entidades
+  "use that": "usar esto"
+  "open that": "abrir esto"
+  "sleep": "dormir"
+  "use anchors": "usar el nexo de reaparición"
+  "use explosives": "usar explosivos"
+
+  # Generar entidades / soltar objetos
+  "place things": "colocar objetos"
+  "place vehicles": "colocar vehículos"
+  "drop items": "soltar objetos"
+  "drop XP": "soltar experiencia"
+  "use lingering potions": "usar pociones persistentes"
+
+  # Destruir entidades / recoger objetos
+  "break things": "romper objetos"
+  "break vehicles": "romper vehículos"
+  "pick up items": "recoger objetos"
+
+  # Dañar / montar entidades
+  "change that": "modificar esto"
+  "ride that": "montarte en esto"
+  "hit that": "atacar esto"
+  "damage that": "dañar esto"
+  "harm that": "hacer daño a esto"
+  "PvP": "luchar contra jugadores"
+
+messages:
+  reloaded: "%prefix% &#70e000¡Plugin recargado correctamente! &#e2eafcLos nuevos mensajes/traducciones se han aplicado a WorldGuard. &7(Tiempo: %s ms.)"
+  deny_message:
+    installed: "%prefix% &#70e000¡deny_message establecido correctamente!"
+    installed_temp: "%prefix% &#70e000deny_message temporal establecido correctamente &7(dura hasta que se reinicie el servidor o el plugin)"
+  component:
+    added: "%prefix% &#70e000Traducción añadida correctamente: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
+    usage: "%prefix% &#e2eafcUsa el formato &#2bafb6<clave>;<traducción>&#e2eafc. Ejemplo: &#2bafb6break that block;romper bloques"
+    remove:
+      is_not_contains: "%prefix% &#e2eafcEl componente &#2bafb6%s &#e2eafcno está en la lista de componentes."
+      removed: "%prefix% &#70e000Traducción eliminada correctamente: &#2bafb6%s &#a1a8b8-> &#2bafb6%s"
+    list:
+      header: "&#a1a8b8----- &#2bafb6&lWG-T : Componentes &#a1a8b8-----\n"
+      # {0} - clave | {1} - traducción
+      format: "&#a1a8b8• &#2bafb6{0} &#a1a8b8-> &#e2eafc{1}"
+  help: |-
+    &8----- &3&lWorldGuard Translator &8-----
+    
+    &8• &e/%cmd% &6<reload | restart> &7- &#e2eafcRecargar el plugin.
+    &8• &e/%cmd% &6component <add | set | list | remove> &7- &#e2eafcGestionar las traducciones.
+    &8• &e/%cmd% &6denyMessage <set | setTemp> &7- &#e2eafcEstablecer deny_message.
